@@ -1,32 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/11/28 20:24:14 by lmaximin          #+#    #+#             */
-/*   Updated: 2019/12/01 18:21:48 by lmaximin         ###   ########.fr       */
+/*   Created: 2019/12/01 18:51:07 by lmaximin          #+#    #+#             */
+/*   Updated: 2019/12/01 18:54:47 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/fillit.h"
 #include "../libft/libft.h"
-#include "../libft/get_next_line.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <unistd.h>
-
-#include <stdio.h>
-
-int     main(void)
+t_point			*create_point(int x, int y)
 {
-	char *line = NULL;
-	int fd = open("src/main.c", O_RDONLY);
-	printf("%d",fd);
-	get_next_line(fd, &line);
-	printf("%s", line);
-	close(fd);
-	return (0);
+	t_point		*p;
+
+	p = (t_point*)ft_memalloc(sizeof(t_point));
+	p->x = x;
+	p->y = y;
+	return (p);
 }
