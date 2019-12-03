@@ -6,27 +6,37 @@
 /*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 20:24:14 by lmaximin          #+#    #+#             */
-/*   Updated: 2019/12/01 18:21:48 by lmaximin         ###   ########.fr       */
+/*   Updated: 2019/12/03 20:38:10 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../libft/libft.h"
 #include "../libft/get_next_line.h"
+#include "../includes/fillit.h"
 
-# include <sys/types.h>
-# include <sys/stat.h>
-# include <fcntl.h>
-# include <unistd.h>
+#include <fcntl.h>
 
+//TODO: delete
 #include <stdio.h>
 
-int     main(void)
+int		main(int argc, char **argv)
 {
-	char *line = NULL;
-	int fd = open("src/main.c", O_RDONLY);
-	printf("%d",fd);
-	get_next_line(fd, &line);
-	printf("%s", line);
-	close(fd);
+	t_list	*list;
+	t_map	*map;
+
+	if (argc != 2)
+	{
+		ft_putstr("usage: fillit input_file\n");
+		return (1);
+	}
+	if ((list = read_input_file(open(argv[1], O_RDONLY))) == NULL)
+	{
+		ft_putstr("error\n");
+		return (1);
+	}
+	map = solve(list);
+	print_map(map);
+	clear_map(map, map->size);
+	clear_list(list);
 	return (0);
 }
