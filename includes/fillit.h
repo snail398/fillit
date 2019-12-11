@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cwing <cwing@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 20:23:49 by lmaximin          #+#    #+#             */
-/*   Updated: 2019/12/03 20:35:48 by lmaximin         ###   ########.fr       */
+/*   Updated: 2019/12/11 20:12:15 by cwing            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 # include <string.h>
 # include "../libft/libft.h"
 # include "../libft/get_next_line.h"
+# include <fcntl.h>
+# define READBUFF 21
 
 typedef struct	s_map
 {
