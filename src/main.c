@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cwing <cwing@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 20:24:14 by lmaximin          #+#    #+#             */
-/*   Updated: 2019/12/03 20:38:10 by lmaximin         ###   ########.fr       */
+/*   Updated: 2020/01/08 08:13:26 by cwing            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,6 @@ int		main(int argc, char **argv)
 	map = solve(list);
 	print_map(map);
 	clear_map(map, map->size);
-	clear_list(list);
+	ft_lstfree(&list);
 	return (0);
 }

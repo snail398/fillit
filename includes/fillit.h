@@ -6,7 +6,7 @@
 /*   By: cwing <cwing@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 20:23:49 by lmaximin          #+#    #+#             */
-/*   Updated: 2019/12/11 20:12:15 by cwing            ###   ########.fr       */
+/*   Updated: 2020/01/05 09:21:15 by cwing            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,13 @@ typedef struct	s_map
 	int			size;
 	char		**array;
 }				t_map;
+
 typedef struct	s_point
 {
 	int			x;
 	int			y;
 }				t_point;
+
 typedef struct	s_shape
 {
 	char		**pos;
@@ -43,6 +45,6 @@ int			try_place_shape(t_shape *shape, t_map *map, t_point *p);
 void		place_shape(t_shape *shape, t_map *map, t_point *p, char c);
 t_point		*create_point(int x, int y);
 t_list		*read_input_file(int fd);
-void		clear_list(t_list *list);
+void		ft_lstfree(t_list **list);
 t_map		*solve(t_list *list);
 #endif
