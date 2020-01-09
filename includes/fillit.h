@@ -6,7 +6,7 @@
 /*   By: cwing <cwing@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 20:23:49 by lmaximin          #+#    #+#             */
-/*   Updated: 2020/01/05 09:21:15 by cwing            ###   ########.fr       */
+/*   Updated: 2020/01/09 07:31:44 by cwing            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,8 @@ int			try_place_shape(t_shape *shape, t_map *map, t_point *p);
 void		place_shape(t_shape *shape, t_map *map, t_point *p, char c);
 t_point		*create_point(int x, int y);
 t_list		*read_input_file(int fd);
+t_shape		*get_shape(char *buff);
 void		ft_lstfree(t_list **list);
+int			check_tetro(char *buff);
 t_map		*solve(t_list *list);
 #endif

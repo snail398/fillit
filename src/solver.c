@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
+/*   By: cwing <cwing@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 19:04:55 by lmaximin          #+#    #+#             */
-/*   Updated: 2019/12/03 20:38:59 by lmaximin         ###   ########.fr       */
+/*   Updated: 2020/01/09 07:14:55 by cwing            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ t_map		*solve(t_list *list)
 	{
 		size++;
 		clear_map(map, map->size);
-		map = create_default_map(size);
+		/*map = create_default_map(size);*/
 	}
 	return (map);
 }
