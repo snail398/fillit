@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   solver.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cwing <cwing@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 19:04:55 by lmaximin          #+#    #+#             */
-/*   Updated: 2020/01/09 07:14:55 by cwing            ###   ########.fr       */
+/*   Updated: 2020/01/11 12:31:15 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int			solve_map(t_map *map, t_list *list)
 	int			y;
 	t_shape		*shape;
 
-	if (shape == NULL)
+	if (list == NULL)
 		return (1);
 	y = 0;
 	shape = (t_shape*)list->content;
@@ -63,7 +63,14 @@ t_map		*solve(t_list *list)
 	{
 		size++;
 		clear_map(map, map->size);
-		/*map = create_default_map(size);*/
+		map = create_default_map(size);
 	}
 	return (map);
+}
+
+void		*clear_temp(t_list *list, char *temp)
+{
+	ft_lstfree(&list);
+	ft_strdel(&temp);
+	return (NULL);
 }

@@ -3,23 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   reader.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cwing <cwing@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:26:40 by cwing             #+#    #+#             */
-/*   Updated: 2020/01/09 07:31:30 by cwing            ###   ########.fr       */
+/*   Updated: 2020/01/11 12:18:30 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fillit.h"
 
-void        print_contetn(t_shape *shape)
+void		print_contetn(t_shape *shape)
 {
-	char    **line;
-	int     i;
+	char	**line;
+	int		i;
 
 	i = 0;
 	line = shape->pos;
-	while(i < shape->height)
+	while (i < shape->height)
 	{
 		ft_putstr(line[i]);
 		i++;
@@ -35,20 +35,18 @@ void        print_contetn(t_shape *shape)
 	ft_putchar('\n');
 }
 
-char        *read_buff(int fd)
+char		*read_buff(int fd)
 {
-	char    *temp;
+	char	*temp;
 
 	if ((temp = ft_strnew(READBUFF)))
 	{
-		if((read(fd, temp, READBUFF)) && check_tetro(temp))
-		{
-			return(temp);
-		}
+		if ((read(fd, temp, READBUFF)))
+			return (temp);
 		else
 		{
-			free (temp);
-			return(NULL);
+			free(temp);
+			return (NULL);
 		}
 	}
 	else
@@ -81,7 +79,7 @@ void		delete_fat(t_list *head)
 
 	start = head;
 	y = 0;
-	while(start)
+	while (start)
 	{
 		shape = start->content;
 		while (shape->pos[y])
@@ -102,30 +100,29 @@ void		delete_fat(t_list *head)
 
 t_list		*read_input_file(int fd)
 {
-	t_list  *list;
-	t_list  *t_lst;
-	char    *temp;
+	t_list	*list;
+	t_list	*t_lst;
+	char	*temp;
 
 	list = NULL;
 	while ((temp = read_buff(fd)))
 	{
-		if ((list == NULL) && (list = ft_lstnew(get_shape(temp), sizeof(t_shape) + 1)))
+		if (!check_tetro(temp))
+			return (clear_temp(list, temp));
+		if ((list == NULL)
+			&& (list = ft_lstnew(get_shape(temp), sizeof(t_shape) + 1)))
 			continue;
 		else if ((t_lst = ft_lstnew(get_shape(temp), sizeof(t_shape) + 1)))
-			ft_lstaddtoend(&list,t_lst);
+			ft_lstaddtoend(&list, t_lst);
 		else
-		{
-			ft_lstfree(&list);
-			ft_strdel(&temp);
-			return(NULL);
-		}
+			return (clear_temp(list, temp));
 	}
 	set_val(list);
 	delete_fat(list);
-	if (read(fd, 0 ,1))
+	if (read(fd, 0, 1))
 	{
 		ft_lstfree(&list);
-		return(NULL);
+		return (NULL);
 	}
-	return(list);
+	return (list);
 }

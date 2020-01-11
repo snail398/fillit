@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fillit.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cwing <cwing@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 20:23:49 by lmaximin          #+#    #+#             */
-/*   Updated: 2020/01/09 07:31:44 by cwing            ###   ########.fr       */
+/*   Updated: 2020/01/11 12:14:28 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,7 @@ t_shape		*get_shape(char *buff);
 void		ft_lstfree(t_list **list);
 int			check_tetro(char *buff);
 t_map		*solve(t_list *list);
+void		print_contetn(t_shape *shape);
+void		*clear_temp(t_list  *list, char *temp);
+
 #endif

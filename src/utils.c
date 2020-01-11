@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: cwing <cwing@student.42.fr>                +#+  +:+       +#+        */
+/*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 18:51:07 by lmaximin          #+#    #+#             */
-/*   Updated: 2020/01/09 07:28:14 by cwing            ###   ########.fr       */
+/*   Updated: 2020/01/11 12:33:50 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ static int		check_connection(char *buff)
 	return (block == 6 || block == 8);
 }
 
-int		check_tetro(char *buff)
+int				check_tetro(char *buff)
 {
 	int		i;
 	int		line;
@@ -64,7 +64,7 @@ int		check_tetro(char *buff)
 			if (buff[i] == '#' && ++line > 4)
 				return (0);
 		}
-		else if (buff[i] != '\n')
+		else if (buff[i] != '\n' && ft_strlen(buff) > 19)
 			return (0);
 		i++;
 	}
@@ -75,7 +75,7 @@ int		check_tetro(char *buff)
 	return (1);
 }
 
-static char	**clean_arr(char **res)
+static char		**clean_arr(char **res)
 {
 	int		i;
 
@@ -87,11 +87,11 @@ static char	**clean_arr(char **res)
 	return (NULL);
 }
 
-void        ft_lstfree(t_list **list)
+void			ft_lstfree(t_list **list)
 {
-	t_list  *to_del;
-	t_list  *next;
-	t_shape *del_shape;
+	t_list	*to_del;
+	t_list	*next;
+	t_shape	*del_shape;
 
 	to_del = *list;
 	while (to_del)
