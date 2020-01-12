@@ -6,7 +6,7 @@
 /*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:26:40 by cwing             #+#    #+#             */
-/*   Updated: 2020/01/11 12:18:30 by lmaximin         ###   ########.fr       */
+/*   Updated: 2020/01/12 10:35:18 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,26 +103,24 @@ t_list		*read_input_file(int fd)
 	t_list	*list;
 	t_list	*t_lst;
 	char	*temp;
+	t_shape	*t_shp;
 
 	list = NULL;
 	while ((temp = read_buff(fd)))
 	{
 		if (!check_tetro(temp))
-			return (clear_temp(list, temp));
-		if ((list == NULL)
-			&& (list = ft_lstnew(get_shape(temp), sizeof(t_shape) + 1)))
-			continue;
-		else if ((t_lst = ft_lstnew(get_shape(temp), sizeof(t_shape) + 1)))
-			ft_lstaddtoend(&list, t_lst);
+			return (clear_temp(list, temp, t_shp));
+		if (!(t_shp = get_shape(temp)))
+			return (clear_temp(list, temp, t_shp));
+		if (!(t_lst = ft_lstnew(t_shp, sizeof(t_shape))))
+			return (clear_temp(list, temp, t_shp));
+		ft_memdel((void*)&t_shp);
+		if (list == NULL)
+			list = t_lst;
 		else
-			return (clear_temp(list, temp));
+			ft_lstaddtoend(&list, t_lst);
 	}
 	set_val(list);
 	delete_fat(list);
-	if (read(fd, 0, 1))
-	{
-		ft_lstfree(&list);
-		return (NULL);
-	}
 	return (list);
 }

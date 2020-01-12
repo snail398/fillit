@@ -6,29 +6,32 @@
 #    By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2019/11/28 20:22:48 by lmaximin          #+#    #+#              #
-#    Updated: 2020/01/11 11:02:16 by lmaximin         ###   ########.fr        #
+#    Updated: 2020/01/12 11:11:33 by lmaximin         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = work
+NAME = fillit
 
 GC = gcc
 
 FLAG = -Wall -Wextra -Werror
 
-FOLD = src/
+SRC = main.c map.c reader.c shape.c solver.c utils.c
 
-SRC = $(FOLD)main.c $(FOLD)map.c $(FOLD)reader.c $(FOLD)shape.c $(FOLD)solver.c $(FOLD)utils.c
+SRC_DIR = ./src
 
-OBJ = $(SRC:.c=.o)
+L_FT = libft
 
-all: $(NAME) 
+OBJ	= $(SRC:.c=.o)	
 
-$(NAME):
-	$(GC) $(FLAG) -o $(NAME) $(SRC) -L libft -lft
+all: 
+	@$(MAKE) -C $(L_FT)
+	$(GC) $(FLAG) $(addprefix $(SRC_DIR)/, $(SRC)) -c 
+	$(GC) $(FLAG) -o $(NAME) $(OBJ) -L libft -lft
+
 
 clean:
-		/bin/rm -f $(OBJ)
+		rm -rf $(OBJ)
 
 fclean: clean
 		/bin/rm -f $(NAME)

@@ -6,7 +6,7 @@
 /*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 18:51:07 by lmaximin          #+#    #+#             */
-/*   Updated: 2020/01/11 12:33:50 by lmaximin         ###   ########.fr       */
+/*   Updated: 2020/01/12 09:57:35 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,11 +97,10 @@ void			ft_lstfree(t_list **list)
 	while (to_del)
 	{
 		next = to_del->next;
-		del_shape = to_del->content;
+		del_shape = (t_shape*)to_del->content;
 		clean_arr(del_shape->pos);
-		free(del_shape);
-		del_shape = NULL;
-		free(to_del);
+		ft_memdel((void*)&del_shape);
+		ft_memdel((void*)&to_del);
 		to_del = next;
 	}
 	list = NULL;

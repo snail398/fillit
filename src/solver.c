@@ -6,7 +6,7 @@
 /*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 19:04:55 by lmaximin          #+#    #+#             */
-/*   Updated: 2020/01/11 12:31:15 by lmaximin         ###   ########.fr       */
+/*   Updated: 2020/01/12 10:34:25 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,9 @@ t_map		*solve(t_list *list)
 	return (map);
 }
 
-void		*clear_temp(t_list *list, char *temp)
+void		*clear_temp(t_list *list, char *temp, t_shape *t_shp)
 {
+	ft_memdel((void*)&t_shp);
 	ft_lstfree(&list);
 	ft_strdel(&temp);
 	return (NULL);

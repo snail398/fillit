@@ -6,7 +6,7 @@
 /*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/09 07:30:36 by cwing             #+#    #+#             */
-/*   Updated: 2020/01/11 12:33:12 by lmaximin         ###   ########.fr       */
+/*   Updated: 2020/01/12 09:52:28 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,6 +98,7 @@ t_shape			*get_shape(char *buff)
 		return (NULL);
 	if ((shape->pos = ft_strsplit(buff, '\n')))
 	{
+		ft_strdel(&buff);
 		while (!(ft_strchr(shape->pos[0], '#')))
 			rotar_map(shape->pos);
 		while (pillar_empty(shape->pos))
@@ -107,7 +108,7 @@ t_shape			*get_shape(char *buff)
 	}
 	else
 	{
-		free(shape);
+		ft_memdel((void*)&shape);
 		return (NULL);
 	}
 }
