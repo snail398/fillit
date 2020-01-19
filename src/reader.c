@@ -6,7 +6,7 @@
 /*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/11 19:26:40 by cwing             #+#    #+#             */
-/*   Updated: 2020/01/12 10:35:18 by lmaximin         ###   ########.fr       */
+/*   Updated: 2020/01/19 17:29:54 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,10 +104,13 @@ t_list		*read_input_file(int fd)
 	t_list	*t_lst;
 	char	*temp;
 	t_shape	*t_shp;
+	int		check;
 
 	list = NULL;
 	while ((temp = read_buff(fd)))
 	{
+		check = ft_strlen(temp);
+		t_shp = NULL;
 		if (!check_tetro(temp))
 			return (clear_temp(list, temp, t_shp));
 		if (!(t_shp = get_shape(temp)))
@@ -120,7 +123,5 @@ t_list		*read_input_file(int fd)
 		else
 			ft_lstaddtoend(&list, t_lst);
 	}
-	set_val(list);
-	delete_fat(list);
-	return (list);
+	return (last_check(list, temp, t_shp, check));
 }

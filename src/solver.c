@@ -6,7 +6,7 @@
 /*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 19:04:55 by lmaximin          #+#    #+#             */
-/*   Updated: 2020/01/12 10:34:25 by lmaximin         ###   ########.fr       */
+/*   Updated: 2020/01/19 17:31:52 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,4 +74,13 @@ void		*clear_temp(t_list *list, char *temp, t_shape *t_shp)
 	ft_lstfree(&list);
 	ft_strdel(&temp);
 	return (NULL);
+}
+
+t_list		*last_check(t_list *list, char *temp, t_shape *t_shp, int d)
+{
+	if (d > 20)
+		return (clear_temp(list, temp, t_shp));
+	set_val(list);
+	delete_fat(list);
+	return (list);
 }

@@ -6,7 +6,7 @@
 /*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/11/28 20:23:49 by lmaximin          #+#    #+#             */
-/*   Updated: 2020/01/12 11:12:40 by lmaximin         ###   ########.fr       */
+/*   Updated: 2020/01/19 17:31:01 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,5 +51,8 @@ int				check_tetro(char *buff);
 t_map			*solve(t_list *list);
 void			print_contetn(t_shape *shape);
 void			*clear_temp(t_list *list, char *temp, t_shape *t_shp);
+t_list			*last_check(t_list *list, char *temp, t_shape *t_shp, int d);
+void			set_val(t_list *head2);
+void			delete_fat(t_list *head);
 
 #endif

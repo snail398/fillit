@@ -6,7 +6,7 @@
 /*   By: lmaximin <lmaximin@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/12/01 18:51:07 by lmaximin          #+#    #+#             */
-/*   Updated: 2020/01/12 09:57:35 by lmaximin         ###   ########.fr       */
+/*   Updated: 2020/01/19 16:55:12 by lmaximin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,6 @@ int				check_tetro(char *buff)
 			return (0);
 		i++;
 	}
-	if (ft_strlen(buff) == 21 && buff[20] != '\n')
-		return (0);
 	if (!check_connection(buff))
 		return (0);
 	return (1);
